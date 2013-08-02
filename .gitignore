@@ -4,3 +4,25 @@
 *.jar
 *.war
 *.ear
+
+# MCP stuff #
+/bin/
+/conf/
+/docs/
+/eclipse/
+/jars/
+/lib/
+/logs/
+/reobf/
+/runtime/
+/temp/
+*.sh
+*.bat
+CHANGELOG
+LICENSE.txt
+
+# Non-Rift source #
+/src/*
+!/src/minecraft/dragonborn/
+!/src/minecraft/dragonborn/*
+!/src/minecraft/dragonborn/**/*
