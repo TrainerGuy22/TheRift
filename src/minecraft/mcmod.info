@@ -1,0 +1,15 @@
+[
+{
+  "modid": "therift",
+  "name": "The Rift",
+  "description": "Complete replacement of The End, with more dragons and glowing trees",
+  "version": "1.0.0",
+  "mcversion": "1.6.2",
+  "logoFile": "/riftlogo.png",
+  "authors": ["TheMike","Briman"],
+  "credits": "",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
