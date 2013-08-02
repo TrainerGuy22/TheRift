@@ -14,7 +14,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import dragonborn.rift.proxy.CommonProxy;
 import dragonborn.rift.util.RiftUtil;
 
-@Mod(modid = RiftMod.MOD_ID, name = "The Rift", version = "1.0.0")
+@Mod(modid = RiftMod.MOD_ID, name = "The Rift", version = "0.5.0")
 @NetworkMod(channels = { RiftMod.MOD_ID }, clientSideRequired = true, serverSideRequired = false, packetHandler = CommonProxy.class)
 public class RiftMod
 {
