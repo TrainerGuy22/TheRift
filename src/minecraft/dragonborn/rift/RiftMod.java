@@ -1,7 +1,10 @@
 package dragonborn.rift;
 
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -22,19 +25,20 @@ public class RiftMod
 	@SidedProxy(serverSide = "dragonborn.rift.proxy.CommonProxy", clientSide = "dragonborn.rift.proxy.ClientProxy")
 	public static CommonProxy	PROXY;
 	
-	@ForgeSubscribe
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		RiftUtil.log("Loading Rift...");
 	}
 	
-	@ForgeSubscribe
+	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		
+		// Add an egg for the dragon
+		EntityList.addMapping(EntityDragon.class, "EnderDragon", 63, 1447446, 0);
 	}
 	
-	@ForgeSubscribe
+	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		RiftUtil.log("Rift successfully loaded!");
