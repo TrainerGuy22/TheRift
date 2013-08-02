@@ -35,7 +35,7 @@ public class RiftMod
 	public void init(FMLInitializationEvent event)
 	{
 		// Add an egg for the dragon
-		EntityList.addMapping(EntityDragon.class, "EnderDragon", 63, 1447446, 0);
+		EntityList.addMapping(EntityDragon.class, "EnderDragon", 63, 0, 0x6622AA);
 	}
 	
 	@EventHandler
