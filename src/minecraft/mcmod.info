@@ -2,8 +2,8 @@
 {
   "modid": "therift",
   "name": "The Rift",
-  "description": "Complete replacement of The End, with more dragons and glowing trees",
-  "version": "1.0.0",
+  "description": "The End? Or is it? The Rift takes everything you thought you knew about The End, and throws it out the door. Raise a dragon, watch a forest light up at night, grow new berries and crops, and more!",
+  "version": "0.5.0",
   "mcversion": "1.6.2",
   "logoFile": "/dragonborn/rift/riftlogo.png",
   "authors": ["TheMike","Briman"],
