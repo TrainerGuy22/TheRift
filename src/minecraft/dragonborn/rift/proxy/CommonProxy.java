@@ -12,13 +12,13 @@ import dragonborn.rift.util.RiftUtil;
 
 public class CommonProxy implements IPacketHandler
 {
-
+	
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
 	{
 		if (RiftUtil.isClient())
 			return; // Don't handle client-side packets on the server
-		
+			
 		try
 		{
 			EntityPlayer ePlayer = null;

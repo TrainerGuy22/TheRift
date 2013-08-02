@@ -6,16 +6,20 @@ import cpw.mods.fml.relauncher.Side;
 import java.util.logging.Logger;
 import cpw.mods.fml.common.FMLLog;
 
-public class RiftUtil {
+public class RiftUtil
+{
 	
-	private static Logger logger = null;
+	private static Logger	logger	= null;
 	
-	public static boolean isClient() {
+	public static boolean isClient()
+	{
 		return FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT;
 	}
 	
-	public static void log(String message) {
-		if(logger == null) {
+	public static void log(String message)
+	{
+		if (logger == null)
+		{
 			logger = Logger.getLogger(RiftMod.MOD_ID);
 			logger.setParent(FMLLog.getLogger());
 		}
