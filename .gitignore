@@ -22,7 +22,7 @@ CHANGELOG
 LICENSE.txt
 
 # Non-Rift source #
-/src/*
+/src/minecraft/*
 !/src/minecraft/dragonborn/
 !/src/minecraft/dragonborn/*
 !/src/minecraft/dragonborn/**/*
