@@ -6,10 +6,11 @@ import java.io.DataInputStream;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 import dragonborn.rift.util.RiftUtil;
 
-public class ClientProxy extends CommonProxy
+public class ClientProxy extends CommonProxy implements IPacketHandler
 {
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
