@@ -1,10 +1,17 @@
 package dragonborn.rift.util;
 
-import dragonborn.rift.RiftMod;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
 import java.util.logging.Logger;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.WorldServer;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.relauncher.Side;
+import dragonborn.rift.RiftMod;
+import dragonborn.rift.dimension.TeleporterRift;
 
 public class RiftUtil
 {

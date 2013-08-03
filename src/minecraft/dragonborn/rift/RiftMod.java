@@ -18,10 +18,10 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import dragonborn.rift.command.CommandRiftTP;
 import dragonborn.rift.config.Config;
+import dragonborn.rift.dimension.WorldProviderRift;
 import dragonborn.rift.proxy.ClientProxy;
 import dragonborn.rift.proxy.CommonProxy;
 import dragonborn.rift.util.RiftUtil;
-import dragonborn.rift.worldgen.WorldProviderRift;
 
 @Mod(modid = RiftMod.MOD_ID, name = "The Rift", version = "0.5.0")
 @NetworkMod(channels = { RiftMod.MOD_ID }, clientSideRequired = true, serverSideRequired = false, packetHandler = CommonProxy.class, clientPacketHandlerSpec = @SidedPacketHandler(channels = { RiftMod.MOD_ID }, packetHandler = ClientProxy.class))

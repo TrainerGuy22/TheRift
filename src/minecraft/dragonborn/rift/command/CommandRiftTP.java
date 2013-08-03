@@ -3,11 +3,14 @@ package dragonborn.rift.command;
 import java.util.ArrayList;
 import java.util.List;
 
-import dragonborn.rift.config.Config;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.world.WorldServer;
+import dragonborn.rift.config.Config;
+import dragonborn.rift.dimension.TeleporterRift;
 
 public class CommandRiftTP extends CommandBase
 {
@@ -27,16 +30,19 @@ public class CommandRiftTP extends CommandBase
 	@Override
 	public void processCommand(ICommandSender sender, String[] args)
 	{
-		if (sender instanceof EntityPlayer)
+		if (sender instanceof EntityPlayerMP)
 		{
-			EntityPlayer player = (EntityPlayer) sender;
+			EntityPlayerMP player = (EntityPlayerMP) sender;
 			if (args.length == 1)
 			{
 				if (args[0].equalsIgnoreCase("goto"))
 				{
 					if (player.dimension != Config.DIMENSION_ID)
 					{
-						player.travelToDimension(Config.DIMENSION_ID); // Enter The Rift
+						MinecraftServer server = MinecraftServer.getServer();
+						WorldServer newWorld = server.worldServerForDimension(Config.DIMENSION_ID);
+						server.getConfigurationManager().transferPlayerToDimension(player, Config.DIMENSION_ID, new TeleporterRift(newWorld));
+						player.posY++; // bump player up 1 block so they don't get stuck
 					}
 					else
 					{
@@ -47,7 +53,10 @@ public class CommandRiftTP extends CommandBase
 				{
 					if (player.dimension == Config.DIMENSION_ID)
 					{
-						player.travelToDimension(0); // Return to overworld
+						MinecraftServer server = MinecraftServer.getServer();
+						WorldServer newWorld = server.worldServerForDimension(0);
+						server.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterRift(newWorld));
+						player.posY++; // bump player up 1 block so they don't get stuck
 					}
 					else
 					{

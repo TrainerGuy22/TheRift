@@ -1,13 +1,35 @@
-package dragonborn.rift.worldgen;
+package dragonborn.rift.dimension;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import dragonborn.rift.config.Config;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.WorldChunkManagerHell;
+import net.minecraft.world.chunk.IChunkProvider;
 
 public class WorldProviderRift extends WorldProvider
 {
+	public WorldProviderRift()
+	{
+		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenRift.biomeGenRift, 0.0F, 0.0F);
+	}
+	
+	@Override
+	public IChunkProvider createChunkGenerator()
+	{
+		return new ChunkProviderRift(this.worldObj, this.worldObj.getSeed());
+	}
+	
+	@Override
+	public BiomeGenBase getBiomeGenForCoords(int x, int z)
+	{
+		return BiomeGenRift.biomeGenRift;
+	}
+	
 	@Override
 	public String getDimensionName()
 	{
@@ -51,6 +73,12 @@ public class WorldProviderRift extends WorldProvider
 	public boolean isSkyColored()
 	{
 		return false;
+	}
+	
+	@Override
+	public int getRespawnDimension(EntityPlayerMP player)
+	{
+		return Config.DIMENSION_ID;
 	}
 	
 }
