@@ -10,6 +10,7 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.ChunkProviderGenerate;
 
 public class WorldProviderRift extends WorldProvider
 {
@@ -21,7 +22,8 @@ public class WorldProviderRift extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		return new ChunkProviderRift(this.worldObj, this.worldObj.getSeed());
+		//return new ChunkProviderRift(this.worldObj, this.worldObj.getSeed());
+		return new ChunkProviderGenerate(worldObj, worldObj.getSeed() + 1, false);
 	}
 	
 	@Override
@@ -59,7 +61,7 @@ public class WorldProviderRift extends WorldProvider
 	@SideOnly(Side.CLIENT)
 	public Vec3 getFogColor(float par1, float par2)
 	{
-		return Vec3.fakePool.getVecFromPool(149.0 / 255.0, 0.0, 191.0 / 255.0);
+		return Vec3.fakePool.getVecFromPool(75.0 / 255.0, 0.0, 100.0 / 255.0);
 	}
 	
 	@Override

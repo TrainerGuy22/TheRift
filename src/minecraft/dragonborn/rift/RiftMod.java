@@ -16,8 +16,11 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
 import dragonborn.rift.command.CommandRiftTP;
+import dragonborn.rift.config.Blocks;
 import dragonborn.rift.config.Config;
+import dragonborn.rift.dimension.WorldGenRiftTerrain;
 import dragonborn.rift.dimension.WorldProviderRift;
 import dragonborn.rift.proxy.ClientProxy;
 import dragonborn.rift.proxy.CommonProxy;
@@ -41,6 +44,9 @@ public class RiftMod
 		
 		/** Load configuration */
 		Config.loadConfig(event.getSuggestedConfigurationFile());
+		
+		/** Load blocks */
+		Blocks.initBlocks();
 	}
 	
 	@EventHandler
@@ -53,6 +59,9 @@ public class RiftMod
 		int dimensionID = Config.DIMENSION_ID;
 		DimensionManager.registerProviderType(dimensionID, WorldProviderRift.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
+		
+		/** Register world generator */
+		GameRegistry.registerWorldGenerator(new WorldGenRiftTerrain());
 	}
 	
 	@EventHandler

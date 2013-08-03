@@ -4,27 +4,55 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.common.ForgeDirection;
+import cpw.mods.fml.common.IWorldGenerator;
+import dragonborn.rift.config.Blocks;
+import dragonborn.rift.config.Config;
+import dragonborn.rift.util.RiftUtil;
 
-public class WorldGenRiftTerrain extends WorldGenerator
+public class WorldGenRiftTerrain implements IWorldGenerator
 {
 	
 	@Override
-	public boolean generate(World world, Random random, int chunkX, int genY, int chunkZ)
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		for (int x = chunkX; x < chunkX + 16; x++)
+		if (world.provider.dimensionId != Config.DIMENSION_ID)
+			return;
+		
+		int x = chunkX * 16;
+		int z = chunkZ * 16;
+		
+		for (int gX = x; gX < x + 16; gX++)
 		{
-			for (int z = chunkZ; z < chunkZ + 16; z++)
+			for (int gZ = z; gZ < z + 16; gZ++)
 			{
-				world.setBlock(x, 0, z, Block.bedrock.blockID);
-				for (int y = 1; y <= 16; y++)
+				for (int gY = 0; gY < 256; gY++)
 				{
-					world.setBlock(x, y, z, Block.oreDiamond.blockID);
+					int id = world.getBlockId(gX, gY, gZ);
+					if (id == Block.stone.blockID)
+					{
+						world.setBlock(gX, gY, gZ, Block.whiteStone.blockID, 0, RiftUtil.NMASK_NONE);
+					}
+					else if (id == Block.gravel.blockID || id == Block.dirt.blockID || id == Block.sand.blockID)
+					{
+						int meta = 0;
+						if (!world.isBlockSolidOnSide(gX, gY + 1, gZ, ForgeDirection.UP) || world.isAirBlock(gX, gY + 1, gZ))
+							meta = 1;
+						world.setBlock(gX, gY, gZ, Blocks.blockID_dragonTerrain, meta, RiftUtil.NMASK_NONE);
+					}
+					else if (id == Block.grass.blockID)
+					{
+						world.setBlock(gX, gY, gZ, Blocks.blockID_dragonTerrain, 1, RiftUtil.NMASK_NONE);
+					}
+					else
+					// we don't want ANYTHING else.
+					{
+						world.setBlock(gX, gY, gZ, 0, 0, RiftUtil.NMASK_NONE);
+					}
 				}
 			}
 		}
-		
-		return true;
 	}
 	
 }
