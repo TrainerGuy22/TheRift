@@ -24,6 +24,5 @@ public class RiftUtil
 			logger.setParent(FMLLog.getLogger());
 		}
 		logger.info(message);
-		
 	}
 }
