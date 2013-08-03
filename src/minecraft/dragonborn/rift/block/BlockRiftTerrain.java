@@ -66,6 +66,18 @@ public class BlockRiftTerrain extends Block
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+		double xOff = rand.nextDouble() - 0.5;
+		double yOff = rand.nextDouble() / 4.0;
+		double zOff = rand.nextDouble() - 0.5;
+		if (meta == 1 && rand.nextInt(5) == 0)
+			world.spawnParticle("portal", x + 0.5 + xOff, y + 1.5 + yOff, z + 0.5 + zOff, 0.0, -1.0, 0.0);
+	}
+	
+	@Override
 	public void registerIcons(IconRegister register)
 	{
 		dirt = register.registerIcon(RiftMod.MOD_ID + ":enderdirt");

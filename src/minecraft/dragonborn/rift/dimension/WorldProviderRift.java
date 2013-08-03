@@ -20,9 +20,15 @@ public class WorldProviderRift extends WorldProvider
 	}
 	
 	@Override
+	protected void registerWorldChunkManager()
+	{
+		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenRift.biomeGenRift, 0.0F, 0.0F);
+	}
+	
+	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		//return new ChunkProviderRift(this.worldObj, this.worldObj.getSeed());
+		// return new ChunkProviderRift(this.worldObj, this.worldObj.getSeed());
 		return new ChunkProviderGenerate(worldObj, worldObj.getSeed() + 1, false);
 	}
 	
