@@ -18,6 +18,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.IPlantable;
 
 public class BlockRiftTerrain extends Block
 {
@@ -34,6 +35,12 @@ public class BlockRiftTerrain extends Block
 		setStepSound(soundGrassFootstep);
 		setTickRandomly(true);
 		setCreativeTab(CreativeTabs.tabBlock);
+	}
+	
+	@Override
+	public boolean canSustainPlant(World world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
+	{
+		return plant instanceof BlockEnderFlower;
 	}
 	
 	/**

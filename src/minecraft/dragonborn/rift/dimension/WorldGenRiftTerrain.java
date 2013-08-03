@@ -65,6 +65,10 @@ public class WorldGenRiftTerrain implements IWorldGenerator
 				
 				/** Underlay bedrock */
 				world.setBlock(gX, 0, gZ, Block.bedrock.blockID, 0, RiftUtil.NMASK_NONE);
+				
+				/** Add a chance of flowers */
+				if (random.nextInt(32) == 0 && world.getBlockId(gX, topY, gZ) == Blocks.blockID_dragonTerrain)
+					world.setBlock(gX, topY + 1, gZ, Blocks.blockID_enderFlower, 0, RiftUtil.NMASK_NONE);
 			}
 		}
 		
@@ -74,8 +78,8 @@ public class WorldGenRiftTerrain implements IWorldGenerator
 			int numTrees = random.nextInt(2);
 			for (int i = 0; i <= numTrees; i++)
 			{
-				int treeX = random.nextInt(16) + x;
-				int treeZ = random.nextInt(16) + z;
+				int treeX = random.nextInt(8) + x + 4;
+				int treeZ = random.nextInt(8) + z + 4;
 				int treeY = world.getTopSolidOrLiquidBlock(treeX, treeZ);
 				treeGen.generate(world, random, treeX, treeY, treeZ);
 			}

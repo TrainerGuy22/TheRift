@@ -20,6 +20,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import dragonborn.rift.command.CommandRiftTP;
 import dragonborn.rift.config.Blocks;
 import dragonborn.rift.config.Config;
+import dragonborn.rift.config.Items;
+import dragonborn.rift.config.Recipes;
 import dragonborn.rift.dimension.WorldGenRiftTerrain;
 import dragonborn.rift.dimension.WorldProviderRift;
 import dragonborn.rift.proxy.ClientProxy;
@@ -45,8 +47,12 @@ public class RiftMod
 		/** Load configuration */
 		Config.loadConfig(event.getSuggestedConfigurationFile());
 		
-		/** Load blocks */
+		/** Load blocks and items */
 		Blocks.initBlocks();
+		Items.initItems();
+		
+		/** Create recipes */
+		Recipes.initRecipes();
 	}
 	
 	@EventHandler

@@ -2,6 +2,7 @@ package dragonborn.rift.command;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -22,6 +23,26 @@ public class CommandRiftTP extends CommandBase
 	}
 	
 	@Override
+	public int getRequiredPermissionLevel()
+	{
+		return 0;
+	}
+	
+	@Override
+	public boolean canCommandSenderUseCommand(ICommandSender sender)
+	{
+		if (!MinecraftServer.getServer().isDedicatedServer())
+			return true;
+		
+		if (!(sender instanceof EntityPlayerMP))
+			return true; // they get the "must be a player" message
+			
+		EntityPlayerMP player = (EntityPlayerMP) sender;
+		
+		return MinecraftServer.getServer().getConfigurationManager().getOps().contains(player.getEntityName().toLowerCase()) || player.capabilities.isCreativeMode;
+	}
+	
+	@Override
 	public String getCommandUsage(ICommandSender sender)
 	{
 		return "Usage: /rift <goto/return>";
@@ -33,6 +54,7 @@ public class CommandRiftTP extends CommandBase
 		if (sender instanceof EntityPlayerMP)
 		{
 			EntityPlayerMP player = (EntityPlayerMP) sender;
+			
 			if (args.length == 1)
 			{
 				if (args[0].equalsIgnoreCase("goto"))

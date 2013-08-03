@@ -15,7 +15,7 @@ public class WorldGenDragonTree extends WorldGenerator
 	public boolean generate(World world, Random random, int x, int y, int z)
 	{
 		/** Constants */
-		int height = random.nextInt(2) + 4;
+		int height = random.nextInt(2) + 3;
 		int radius = 2;
 		
 		/** Generate trunk */
@@ -34,7 +34,7 @@ public class WorldGenDragonTree extends WorldGenerator
 				
 				if (gX == x && gZ == z)
 				{
-					for (int gY = y + height + 1; gY <= y + height + 3; gY++)
+					for (int gY = y + height + 1; gY <= y + height + 2; gY++)
 					{
 						world.setBlock(gX, gY, gZ, Blocks.blockID_dragonleaves, 0, RiftUtil.NMASK_NONE);
 					}

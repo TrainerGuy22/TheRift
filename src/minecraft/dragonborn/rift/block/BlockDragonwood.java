@@ -22,8 +22,8 @@ public class BlockDragonwood extends Block
 		setUnlocalizedName("dragonwood");
 		setHardness(3.0f);
 		setResistance(4.0f);
-		setLightValue(0.4f);
 		setCreativeTab(CreativeTabs.tabBlock);
+		setStepSound(soundWoodFootstep);
 	}
 	
 	@Override
