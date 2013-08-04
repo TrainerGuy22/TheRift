@@ -22,6 +22,7 @@ import dragonborn.rift.config.Blocks;
 import dragonborn.rift.config.Config;
 import dragonborn.rift.config.Items;
 import dragonborn.rift.config.Recipes;
+import dragonborn.rift.dimension.WorldGenDragonscaleOre;
 import dragonborn.rift.dimension.WorldGenRiftTerrain;
 import dragonborn.rift.dimension.WorldProviderRift;
 import dragonborn.rift.proxy.ClientProxy;
@@ -66,8 +67,9 @@ public class RiftMod
 		DimensionManager.registerProviderType(dimensionID, WorldProviderRift.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		
-		/** Register world generator */
+		/** Register world generators */
 		GameRegistry.registerWorldGenerator(new WorldGenRiftTerrain());
+		GameRegistry.registerWorldGenerator(new WorldGenDragonscaleOre());
 	}
 	
 	@EventHandler

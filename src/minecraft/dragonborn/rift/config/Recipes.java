@@ -14,5 +14,7 @@ public class Recipes
 		GameRegistry.addRecipe(new ItemStack(Item.enderPearl, 1), "NNN", "NNN", "NNN", 'N', Items.item_enderNugget);
 		/** Ender Pearl -> Ender Nuggets */
 		GameRegistry.addRecipe(new ItemStack(Items.item_enderNugget, 9), "P", 'P', Item.enderPearl);
+		/** Dragonscale -> Dragonscale Ingot */
+		GameRegistry.addSmelting(Items.item_dragonscale.itemID, new ItemStack(Items.item_dragonscaleIngot, 1), 2.0f);
 	}
 }
