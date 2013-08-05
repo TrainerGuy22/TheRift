@@ -12,6 +12,7 @@ import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.world.WorldServer;
 import dragonborn.rift.config.Config;
 import dragonborn.rift.dimension.TeleporterRift;
+import dragonborn.rift.util.RiftUtil;
 
 public class CommandRiftTP extends CommandBase
 {
@@ -59,12 +60,9 @@ public class CommandRiftTP extends CommandBase
 			{
 				if (args[0].equalsIgnoreCase("goto"))
 				{
-					if (player.dimension != Config.DIMENSION_ID)
+					if (player.dimension != Config.RIFT_DIMENSION_ID)
 					{
-						MinecraftServer server = MinecraftServer.getServer();
-						WorldServer newWorld = server.worldServerForDimension(Config.DIMENSION_ID);
-						server.getConfigurationManager().transferPlayerToDimension(player, Config.DIMENSION_ID, new TeleporterRift(newWorld));
-						player.posY++; // bump player up 1 block so they don't get stuck
+						RiftUtil.teleportPlayer(player, Config.RIFT_DIMENSION_ID);
 					}
 					else
 					{
@@ -73,12 +71,9 @@ public class CommandRiftTP extends CommandBase
 				}
 				else if (args[0].equalsIgnoreCase("return"))
 				{
-					if (player.dimension == Config.DIMENSION_ID)
+					if (player.dimension == Config.RIFT_DIMENSION_ID)
 					{
-						MinecraftServer server = MinecraftServer.getServer();
-						WorldServer newWorld = server.worldServerForDimension(0);
-						server.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterRift(newWorld));
-						player.posY++; // bump player up 1 block so they don't get stuck
+						RiftUtil.teleportPlayer(player, 0);
 					}
 					else
 					{

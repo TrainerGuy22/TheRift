@@ -10,7 +10,7 @@ public class Config
 	
 	public static int DEFAULT_RIFT_DIMENSION_ID = 8;
 	
-	public static int DIMENSION_ID = DEFAULT_RIFT_DIMENSION_ID;
+	public static int RIFT_DIMENSION_ID = DEFAULT_RIFT_DIMENSION_ID;
 	
 	public static void loadConfig(File configFile)
 	{
@@ -18,7 +18,7 @@ public class Config
 		config.load();
 		
 		/** Load values into fields */
-		DIMENSION_ID = getInt("dimension", "dimensionID", DEFAULT_RIFT_DIMENSION_ID);
+		RIFT_DIMENSION_ID = getInt("dimension", "dimensionID", DEFAULT_RIFT_DIMENSION_ID);
 	}
 	
 	public static Configuration getConfig()

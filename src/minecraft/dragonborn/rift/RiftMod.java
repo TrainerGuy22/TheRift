@@ -1,11 +1,14 @@
 package dragonborn.rift;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -17,6 +20,7 @@ import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
+import dragonborn.rift.block.BlockEndPortalNew;
 import dragonborn.rift.command.CommandRiftTP;
 import dragonborn.rift.config.Blocks;
 import dragonborn.rift.config.Config;
@@ -25,6 +29,8 @@ import dragonborn.rift.config.Recipes;
 import dragonborn.rift.dimension.WorldGenDragonscaleOre;
 import dragonborn.rift.dimension.WorldGenRiftTerrain;
 import dragonborn.rift.dimension.WorldProviderRift;
+import dragonborn.rift.handler.EntityDeathHandler;
+import dragonborn.rift.handler.RiftFuelHandler;
 import dragonborn.rift.proxy.ClientProxy;
 import dragonborn.rift.proxy.CommonProxy;
 import dragonborn.rift.util.RiftUtil;
@@ -63,13 +69,17 @@ public class RiftMod
 		EntityList.addMapping(EntityDragon.class, "EnderDragon", 63, 0, 0x6622AA);
 		
 		/** Register new dimension */
-		int dimensionID = Config.DIMENSION_ID;
+		int dimensionID = Config.RIFT_DIMENSION_ID;
 		DimensionManager.registerProviderType(dimensionID, WorldProviderRift.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		
 		/** Register world generators */
 		GameRegistry.registerWorldGenerator(new WorldGenRiftTerrain());
 		GameRegistry.registerWorldGenerator(new WorldGenDragonscaleOre());
+		
+		/** Register hanlders */
+		MinecraftForge.EVENT_BUS.register(new EntityDeathHandler());
+		GameRegistry.registerFuelHandler(new RiftFuelHandler());
 	}
 	
 	@EventHandler
@@ -94,6 +104,10 @@ public class RiftMod
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		/** Hijack the end portal block */
+		Block.blocksList[Block.endPortal.blockID] = null; // Clear it so the game doesn't freak out on the constructor of the new block
+		Block.blocksList[Block.endPortal.blockID] = new BlockEndPortalNew(Block.endPortal.blockID, Material.portal);
+		
 		RiftUtil.log("Rift successfully loaded!");
 	}
 }
