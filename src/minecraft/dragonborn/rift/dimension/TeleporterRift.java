@@ -20,15 +20,13 @@ public class TeleporterRift extends Teleporter
 	}
 	
 	@Override
-	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
+	public void placeInPortal(Entity entity, double x, double y, double z, float yaw)
 	{
-		int i = MathHelper.floor_double(par1Entity.posX);
-		int j = MathHelper.floor_double(par1Entity.posY) - 1;
-		int k = MathHelper.floor_double(par1Entity.posZ);
-		byte b0 = 1;
-		byte b1 = 0;
+		int newX = MathHelper.floor_double(entity.posX);
+		int newY = MathHelper.floor_double(entity.posY) + 1;
+		int newZ = MathHelper.floor_double(entity.posZ);
 		
-		par1Entity.setLocationAndAngles((double) i, (double) j, (double) k, par1Entity.rotationYaw, 0.0F);
-		par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
+		entity.setLocationAndAngles((double) newX, (double) newY, (double) newZ, entity.rotationYaw, 0.0F);
+		entity.motionX = entity.motionY = entity.motionZ = 0.0D;
 	}
 }

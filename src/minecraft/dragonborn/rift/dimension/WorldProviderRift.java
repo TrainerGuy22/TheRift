@@ -3,8 +3,10 @@ package dragonborn.rift.dimension;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import dragonborn.rift.config.Config;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -29,7 +31,8 @@ public class WorldProviderRift extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		return new ChunkProviderGenerate(worldObj, worldObj.getSeed() + 1, false);
+		// return new ChunkProviderGenerate(worldObj, worldObj.getSeed() + 1, false);
+		return new ChunkProviderRift(worldObj, worldObj.getSeed());
 	}
 	
 	@Override
@@ -65,9 +68,34 @@ public class WorldProviderRift extends WorldProvider
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Vec3 getFogColor(float par1, float par2)
+	public Vec3 getFogColor(float sunAngle, float partialTicks)
 	{
-		return Vec3.fakePool.getVecFromPool(75.0 / 255.0, 0.0, 100.0 / 255.0);
+		double brightness = Math.cos(sunAngle * (float) Math.PI * 2.0F) * 2.0F + 0.5F;
+		
+		if (brightness < 0.0F)
+		{
+			brightness = 0.0F;
+		}
+		
+		if (brightness > 1.0F)
+		{
+			brightness = 1.0F;
+		}
+		
+		double cR = 75.0 / 255.0;
+		double cG = 0.0;
+		double cB = 100.0 / 255.0;
+		cR *= brightness;
+		cG *= brightness;
+		cB *= brightness;
+		return this.worldObj.getWorldVec3Pool().getVecFromPool((double) cR, (double) cG, (double) cB);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks)
+	{
+		return this.getFogColor(this.worldObj.getCelestialAngle(partialTicks), partialTicks);
 	}
 	
 	@Override

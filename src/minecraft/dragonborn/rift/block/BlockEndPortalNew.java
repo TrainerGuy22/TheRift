@@ -4,6 +4,7 @@ import net.minecraft.block.BlockEndPortal;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import dragonborn.rift.config.Config;
 import dragonborn.rift.data.RiftSavedData;
@@ -30,7 +31,15 @@ public class BlockEndPortalNew extends BlockEndPortal
 			if (!riftData.hasDragonDied || !(entity instanceof EntityPlayerMP) /* Only players go to Rift */)
 				entity.travelToDimension(1); // travel to End
 			else
-				RiftUtil.teleportPlayer((EntityPlayerMP) entity, Config.RIFT_DIMENSION_ID); // travel to Rift
+			{
+				EntityPlayerMP player = (EntityPlayerMP) entity;
+				RiftUtil.teleportPlayer(player, Config.RIFT_DIMENSION_ID); // travel to Rift
+				ChunkCoordinates spawnPoint = player.worldObj.getSpawnPoint();
+				/** Place player at spawn */
+				player.posX = spawnPoint.posX;
+				player.posY = spawnPoint.posY + 1;
+				player.posZ = spawnPoint.posZ;
+			}
 		}
 	}
 }

@@ -26,10 +26,8 @@ import dragonborn.rift.config.Blocks;
 import dragonborn.rift.config.Config;
 import dragonborn.rift.config.Items;
 import dragonborn.rift.config.Recipes;
-import dragonborn.rift.dimension.WorldGenDragonscaleOre;
-import dragonborn.rift.dimension.WorldGenRiftTerrain;
 import dragonborn.rift.dimension.WorldProviderRift;
-import dragonborn.rift.handler.EntityDeathHandler;
+import dragonborn.rift.handler.EntityHandler;
 import dragonborn.rift.handler.RiftFuelHandler;
 import dragonborn.rift.proxy.ClientProxy;
 import dragonborn.rift.proxy.CommonProxy;
@@ -73,12 +71,8 @@ public class RiftMod
 		DimensionManager.registerProviderType(dimensionID, WorldProviderRift.class, true);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 		
-		/** Register world generators */
-		GameRegistry.registerWorldGenerator(new WorldGenRiftTerrain());
-		GameRegistry.registerWorldGenerator(new WorldGenDragonscaleOre());
-		
 		/** Register hanlders */
-		MinecraftForge.EVENT_BUS.register(new EntityDeathHandler());
+		MinecraftForge.EVENT_BUS.register(new EntityHandler());
 		GameRegistry.registerFuelHandler(new RiftFuelHandler());
 	}
 	

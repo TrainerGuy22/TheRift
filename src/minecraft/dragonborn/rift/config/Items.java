@@ -25,10 +25,7 @@ public class Items
 	public static int						itemID_dragonscalePickaxe;
 	public static int						itemID_dragonscaleShovel;
 	public static int						itemID_dragonscaleSword;
-<<<<<<< HEAD
-=======
 	public static int						itemID_dragonLighter;
->>>>>>> ee9f4d8201f7386f8399ec85abd9a28abf1d8dbb
 	
 	/** Item instances */
 	public static ItemEnderNugget			item_enderNugget;
@@ -39,10 +36,7 @@ public class Items
 	public static ItemDragonscalePickaxe	item_dragonscalePickaxe;
 	public static ItemDragonscaleShovel		item_dragonscaleShovel;
 	public static ItemDragonscaleSword		item_dragonscaleSword;
-<<<<<<< HEAD
-=======
 	public static ItemDragonLighter			item_dragonLighter;
->>>>>>> ee9f4d8201f7386f8399ec85abd9a28abf1d8dbb
 	
 	public static void initItems()
 	{
@@ -55,10 +49,7 @@ public class Items
 		itemID_dragonscalePickaxe = Config.getInt("items", "dragonScalePickaxe", DEFAULT_ITEM_ID_START + 5);
 		itemID_dragonscaleShovel = Config.getInt("items", "dragonScaleShovel", DEFAULT_ITEM_ID_START + 6);
 		itemID_dragonscaleSword = Config.getInt("items", "dragonScaleSword", DEFAULT_ITEM_ID_START + 7);
-<<<<<<< HEAD
-=======
 		itemID_dragonLighter = Config.getInt("items", "dragonLighter", DEFAULT_ITEM_ID_START + 8);
->>>>>>> ee9f4d8201f7386f8399ec85abd9a28abf1d8dbb
 		
 		/** Initialize Item instances */
 		item_enderNugget = new ItemEnderNugget(itemID_enderNugget);
@@ -69,10 +60,7 @@ public class Items
 		item_dragonscalePickaxe = new ItemDragonscalePickaxe(itemID_dragonscalePickaxe);
 		item_dragonscaleShovel = new ItemDragonscaleShovel(itemID_dragonscaleShovel);
 		item_dragonscaleSword = new ItemDragonscaleSword(itemID_dragonscaleSword);
-<<<<<<< HEAD
-=======
 		item_dragonLighter = new ItemDragonLighter(itemID_dragonLighter);
->>>>>>> ee9f4d8201f7386f8399ec85abd9a28abf1d8dbb
 		
 		/** Register Items */
 		GameRegistry.registerItem(item_enderNugget, "enderNugget");
@@ -83,10 +71,7 @@ public class Items
 		GameRegistry.registerItem(item_dragonscalePickaxe, "dragonscalePickaxe");
 		GameRegistry.registerItem(item_dragonscaleShovel, "dragonscaleShovel");
 		GameRegistry.registerItem(item_dragonscaleSword, "dragonscaleSword");
-<<<<<<< HEAD
-=======
 		GameRegistry.registerItem(item_dragonLighter, "dragonLighter");
->>>>>>> ee9f4d8201f7386f8399ec85abd9a28abf1d8dbb
 		
 		/** Add names */
 		LanguageRegistry.addName(item_enderNugget, "Ender Nugget");
@@ -97,9 +82,6 @@ public class Items
 		LanguageRegistry.addName(item_dragonscalePickaxe, "Dragonscale Pickaxe");
 		LanguageRegistry.addName(item_dragonscaleShovel, "Dragonscale Shovel");
 		LanguageRegistry.addName(item_dragonscaleSword, "Dragonscale Sword");
-<<<<<<< HEAD
-=======
 		LanguageRegistry.addName(item_dragonLighter, "Dragon Lighter");
->>>>>>> ee9f4d8201f7386f8399ec85abd9a28abf1d8dbb
 	}
 }

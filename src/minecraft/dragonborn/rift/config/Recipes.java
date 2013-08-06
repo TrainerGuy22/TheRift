@@ -29,8 +29,6 @@ public class Recipes
 		GameRegistry.addRecipe(new ItemStack(Items.item_dragonscaleShovel, 1), "I", "S", "S", 'I', Items.item_dragonscaleIngot, 'S', Item.stick);
 		/** Dragonscale Sword */
 		GameRegistry.addRecipe(new ItemStack(Items.item_dragonscaleSword, 1), "I", "I", "S", 'I', Items.item_dragonscaleIngot, 'S', Item.stick);
-<<<<<<< HEAD
-=======
 		/** Dragonscale Block */
 		GameRegistry.addRecipe(new ItemStack(Blocks.block_dragonscaleBlock, 1), "III", "III", "III", 'I', Items.item_dragonscaleIngot);
 		/** Dragon Lighter */
@@ -45,6 +43,5 @@ public class Recipes
 		GameRegistry.addRecipe(new ItemStack(Block.furnaceIdle, 1), "SSS", "S S", "SSS", 'S', Block.whiteStone);
 		/** Dragonwood -> Planks */
 		GameRegistry.addRecipe(new ItemStack(Block.planks, 4), "L", 'L', Blocks.block_dragonwood);
->>>>>>> ee9f4d8201f7386f8399ec85abd9a28abf1d8dbb
 	}
 }

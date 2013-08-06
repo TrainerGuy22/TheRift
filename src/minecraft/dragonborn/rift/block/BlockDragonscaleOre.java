@@ -18,7 +18,7 @@ public class BlockDragonscaleOre extends Block
 	public BlockDragonscaleOre(int blockID, Material material)
 	{
 		super(blockID, material);
-		setHardness(20f);
+		setHardness(10.0f);
 		setResistance(20.0f);
 		setUnlocalizedName("dragonscaleOre");
 		setCreativeTab(CreativeTabs.tabBlock);

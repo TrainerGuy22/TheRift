@@ -2,16 +2,14 @@ package dragonborn.rift.command;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatMessageComponent;
-import net.minecraft.world.WorldServer;
 import dragonborn.rift.config.Config;
-import dragonborn.rift.dimension.TeleporterRift;
 import dragonborn.rift.util.RiftUtil;
 
 public class CommandRiftTP extends CommandBase
@@ -62,7 +60,13 @@ public class CommandRiftTP extends CommandBase
 				{
 					if (player.dimension != Config.RIFT_DIMENSION_ID)
 					{
+						double oldX = player.posX;
+						double oldZ = player.posZ;
 						RiftUtil.teleportPlayer(player, Config.RIFT_DIMENSION_ID);
+						double newY = player.worldObj.getTopSolidOrLiquidBlock((int) Math.round(oldX), (int) Math.round(oldZ)) + 1;
+						player.posX = oldX;
+						player.posY = newY;
+						player.posZ = oldZ;
 					}
 					else
 					{
@@ -73,7 +77,13 @@ public class CommandRiftTP extends CommandBase
 				{
 					if (player.dimension == Config.RIFT_DIMENSION_ID)
 					{
-						RiftUtil.teleportPlayer(player, 0);
+						double oldX = player.posX;
+						double oldZ = player.posZ;
+						RiftUtil.teleportPlayer(player, 1);
+						double newY = player.worldObj.getTopSolidOrLiquidBlock((int) Math.round(oldX), (int) Math.round(oldZ)) + 1;
+						player.posX = oldX;
+						player.posY = newY;
+						player.posZ = oldZ;
 					}
 					else
 					{
