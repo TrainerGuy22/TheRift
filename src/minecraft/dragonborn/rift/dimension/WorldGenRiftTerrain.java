@@ -67,7 +67,7 @@ public class WorldGenRiftTerrain implements IWorldGenerator
 				world.setBlock(gX, 0, gZ, Block.bedrock.blockID, 0, RiftUtil.NMASK_NONE);
 				
 				/** Add a chance of flowers */
-				if (random.nextInt(32) == 0 && world.getBlockId(gX, topY, gZ) == Blocks.blockID_dragonTerrain)
+				if (random.nextInt(128) == 0 && world.getBlockId(gX, topY, gZ) == Blocks.blockID_dragonTerrain)
 					world.setBlock(gX, topY + 1, gZ, Blocks.blockID_enderFlower, 0, RiftUtil.NMASK_NONE);
 			}
 		}

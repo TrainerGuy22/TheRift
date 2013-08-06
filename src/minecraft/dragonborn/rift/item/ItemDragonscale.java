@@ -17,7 +17,7 @@ public class ItemDragonscale extends Item
 	public ItemDragonscale(int itemID)
 	{
 		super(itemID);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(CreativeTabs.tabMaterials);
 		setHasSubtypes(true);
 		setUnlocalizedName("dragonscale");
 	}

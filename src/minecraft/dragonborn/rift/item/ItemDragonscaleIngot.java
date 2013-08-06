@@ -1,12 +1,8 @@
 package dragonborn.rift.item;
 
-import java.util.List;
-
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import dragonborn.rift.RiftMod;
@@ -17,7 +13,7 @@ public class ItemDragonscaleIngot extends Item
 	public ItemDragonscaleIngot(int itemID)
 	{
 		super(itemID);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(CreativeTabs.tabMaterials);
 		setHasSubtypes(true);
 		setUnlocalizedName("dragonscaleIngot");
 	}
