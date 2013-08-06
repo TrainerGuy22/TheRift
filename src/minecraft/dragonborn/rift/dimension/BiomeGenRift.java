@@ -29,7 +29,6 @@ public class BiomeGenRift extends BiomeGenBase
 		this.topBlock = (byte) Blocks.blockID_dragonGrass;
 		
 		spawnableList = new ArrayList<SpawnListEntry>();
-		spawnableList.add(new SpawnListEntry(EntityEnderman.class, 4, 4, 4));
 		
 		genTrees = new WorldGenDragonTree();
 	}
@@ -86,4 +85,10 @@ public class BiomeGenRift extends BiomeGenBase
 		
 		return new ArrayList();
 	}
+	
+	@Override
+    public int getSkyColorByTemp(float temp)
+    {
+        return 0;
+    }
 }

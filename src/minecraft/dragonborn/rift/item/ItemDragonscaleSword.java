@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
@@ -41,7 +42,7 @@ public class ItemDragonscaleSword extends ItemSword
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
 	{
-		if (player.getEntityName().equalsIgnoreCase("briman0094")) // briman gets insta-kills
+		if (entity instanceof EntityEnderman)
 		{
 			entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 9001);
 		}
