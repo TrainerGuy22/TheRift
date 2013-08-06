@@ -16,7 +16,8 @@ public class WorldProviderRift extends WorldProvider
 {
 	public WorldProviderRift()
 	{
-		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenRift.biomeGenRift, 0.0F, 0.0F);
+		super();
+		registerWorldChunkManager();
 	}
 	
 	@Override
@@ -28,7 +29,6 @@ public class WorldProviderRift extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		// return new ChunkProviderRift(this.worldObj, this.worldObj.getSeed());
 		return new ChunkProviderGenerate(worldObj, worldObj.getSeed() + 1, false);
 	}
 	
@@ -86,7 +86,7 @@ public class WorldProviderRift extends WorldProvider
 	@Override
 	public int getRespawnDimension(EntityPlayerMP player)
 	{
-		return Config.DIMENSION_ID;
+		return Config.RIFT_DIMENSION_ID;
 	}
 	
 }

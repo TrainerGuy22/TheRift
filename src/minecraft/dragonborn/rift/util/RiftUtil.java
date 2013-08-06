@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.WorldServer;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
@@ -48,5 +49,15 @@ public class RiftUtil
 		{
 			System.out.println(String.format("#%04d. %s", i, Block.blocksList[i] != null ? Block.blocksList[i].getLocalizedName() : "- NULL -"));
 		}
+	}
+	
+	public static void teleportPlayer(EntityPlayerMP player, int dimID)
+	{
+		
+		MinecraftServer server = MinecraftServer.getServer();
+		WorldServer newWorld = server.worldServerForDimension(dimID);
+		server.getConfigurationManager().transferPlayerToDimension(player, dimID, new TeleporterRift(newWorld));
+		
+		// player.travelToDimension(dimID);
 	}
 }

@@ -21,7 +21,7 @@ public class WorldGenDragonscaleOre implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		if (world.provider.dimensionId != Config.DIMENSION_ID)
+		if (world.provider.dimensionId != Config.RIFT_DIMENSION_ID)
 			return;
 		
 		for (int i = 0; i < random.nextInt(2) + 2; i++) // generate between 2 and 4 veins per chunk
@@ -32,7 +32,7 @@ public class WorldGenDragonscaleOre implements IWorldGenerator
 			y = random.nextInt(15) + 5;
 			if (world.getBlockId(x, y, z) == Block.whiteStone.blockID)
 			{
-				System.out.println(String.format("Placing ore at (%d, %d, %d)", x, y, z));
+				// System.out.println(String.format("Placing ore at (%d, %d, %d)", x, y, z));
 				world.setBlock(x, y, z, Blocks.blockID_dragonscaleOre, 0, RiftUtil.NMASK_NONE);
 			}
 		}

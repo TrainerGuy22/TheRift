@@ -23,7 +23,7 @@ public class WorldGenRiftTerrain implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		if (world.provider.dimensionId != Config.DIMENSION_ID)
+		if (world.provider.dimensionId != Config.RIFT_DIMENSION_ID)
 			return;
 		
 		int x = chunkX * 16;

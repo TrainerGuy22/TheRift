@@ -8,9 +8,9 @@ import net.minecraft.world.WorldServer;
 
 public class TeleporterRift extends Teleporter
 {
-	public TeleporterRift(WorldServer server)
+	public TeleporterRift(WorldServer world)
 	{
-		super(server);
+		super(world);
 	}
 	
 	@Override
