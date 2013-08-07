@@ -79,7 +79,7 @@ public class CommandRiftTP extends CommandBase
 					{
 						double oldX = player.posX;
 						double oldZ = player.posZ;
-						RiftUtil.teleportPlayer(player, 1);
+						RiftUtil.teleportPlayer(player, 0);
 						double newY = player.worldObj.getTopSolidOrLiquidBlock((int) Math.round(oldX), (int) Math.round(oldZ)) + 1;
 						player.posX = oldX;
 						player.posY = newY;

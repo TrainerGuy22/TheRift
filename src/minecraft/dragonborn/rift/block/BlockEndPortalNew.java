@@ -34,11 +34,9 @@ public class BlockEndPortalNew extends BlockEndPortal
 			{
 				EntityPlayerMP player = (EntityPlayerMP) entity;
 				RiftUtil.teleportPlayer(player, Config.RIFT_DIMENSION_ID); // travel to Rift
-				ChunkCoordinates spawnPoint = player.worldObj.getSpawnPoint();
 				/** Place player at spawn */
-				player.posX = spawnPoint.posX;
-				player.posY = spawnPoint.posY + 1;
-				player.posZ = spawnPoint.posZ;
+				ChunkCoordinates spawn = RiftUtil.findValidSpawnPoint(player.worldObj);
+				player.playerNetServerHandler.setPlayerLocation(spawn.posX, spawn.posY + 1, spawn.posZ, player.rotationYaw, player.rotationPitch);
 			}
 		}
 	}

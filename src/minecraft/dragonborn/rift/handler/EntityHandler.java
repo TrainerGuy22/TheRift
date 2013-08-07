@@ -52,10 +52,9 @@ public class EntityHandler
 					if (player.dimension == 1) // teleport them to the rift
 					{
 						RiftUtil.teleportPlayer(player, Config.RIFT_DIMENSION_ID);
-						ChunkCoordinates spawn = player.worldObj.getSpawnPoint();
-						spawn.posY = player.worldObj.getTopSolidOrLiquidBlock(spawn.posX, spawn.posZ) + 1;
-						player.fallDistance = 0.0f;
+						ChunkCoordinates spawn = RiftUtil.findValidSpawnPoint(player.worldObj);
 						player.playerNetServerHandler.setPlayerLocation(spawn.posX, spawn.posY + 1, spawn.posZ, player.rotationYaw, player.rotationPitch);
+						player.fallDistance = 0.0f;
 					}
 					else if (player.dimension == Config.RIFT_DIMENSION_ID) // wrap them around to sky
 					{

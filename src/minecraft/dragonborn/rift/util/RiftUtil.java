@@ -1,14 +1,15 @@
 package dragonborn.rift.util;
 
+import java.util.Random;
 import java.util.logging.Logger;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
@@ -62,5 +63,31 @@ public class RiftUtil
 			server.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterRift(overworld)); // WHY THE **** DO I HAVE TO DO THIS, MOJANG
 		}
 		server.getConfigurationManager().transferPlayerToDimension(player, dimID, new TeleporterRift(newWorld));
+	}
+	
+	public static double getDistanceBetweenPoints(ChunkCoordinates a, ChunkCoordinates b)
+	{
+		double xDist = b.posX - a.posX;
+		double yDist = b.posY - a.posY;
+		double zDist = b.posZ - a.posZ;
+		return Math.sqrt(xDist * xDist + yDist * yDist + zDist * zDist);
+	}
+	
+	public static ChunkCoordinates findValidSpawnPoint(World world)
+	{
+		ChunkCoordinates origSpawn = world.getSpawnPoint();
+		ChunkCoordinates spawn = new ChunkCoordinates(origSpawn);
+		Random random = world.rand;
+		
+		spawn.posY = world.getTopSolidOrLiquidBlock(spawn.posX, spawn.posY) + 1;
+		
+		while (!world.isBlockSolidOnSide(spawn.posX, spawn.posY - 1, spawn.posZ, ForgeDirection.UP) && getDistanceBetweenPoints(origSpawn, spawn) < 1024) // we have to give up somewhere if the world is empty
+		{
+			spawn.posX += random.nextInt(3) - 1; // add random number between -1 to 1 x coordinate
+			spawn.posZ += random.nextInt(3) - 1; // add random number between -1 to 1 z coordinate
+			spawn.posY = world.getTopSolidOrLiquidBlock(spawn.posX, spawn.posY) + 1; // recalculate top block
+		}
+		
+		return spawn;
 	}
 }
