@@ -83,7 +83,7 @@ public class BlockDragonscaleBrick extends Block
 						
 						if (checkThisHeight)
 						{
-							if (checkedID != Blocks.blockID_dragonscaleBlock/* && checkedID != Block.fire.blockID*/)
+							if (checkedID != Blocks.blockID_dragonscaleBlock/* && checkedID != Block.fire.blockID */)
 							{
 								System.out.println(String.format("1. Bad block @ (%d, %d, %d)", x + xAxis * checkDist, y + checkHeight, z + zAxis * checkDist));
 								return false;

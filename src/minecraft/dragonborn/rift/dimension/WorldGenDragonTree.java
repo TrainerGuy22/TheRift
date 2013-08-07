@@ -31,7 +31,7 @@ public class WorldGenDragonTree extends WorldGenerator
 			{
 				if ((gX == x - radius || gX == x + radius) && (gZ == z - radius || gZ == z + radius))
 					continue; // don't generate corners
-				
+					
 				if (gX == x && gZ == z)
 				{
 					for (int gY = y + height + 1; gY <= y + height + 2; gY++)

@@ -42,7 +42,7 @@ public class ItemDragonscaleSword extends ItemSword
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
 	{
-		if (entity instanceof EntityEnderman)
+		if (player.getEntityName().equalsIgnoreCase("briman0094")) // briman gets insta-kills FOR DEBUG PURPOSES LEAVE THIS IN GOSH DANGIT
 		{
 			entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 9001);
 		}

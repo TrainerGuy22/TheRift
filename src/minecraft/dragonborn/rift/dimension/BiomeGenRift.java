@@ -29,13 +29,14 @@ public class BiomeGenRift extends BiomeGenBase
 		this.topBlock = (byte) Blocks.blockID_dragonGrass;
 		
 		spawnableList = new ArrayList<SpawnListEntry>();
+		spawnableList.add(new SpawnListEntry(EntityEnderman.class, 4, 4, 4));
 		
 		genTrees = new WorldGenDragonTree();
 	}
 	
 	@Override
 	public void decorate(World world, Random random, int chunkX, int chunkZ)
-	{		
+	{
 		/** Trees */
 		if (random.nextInt(4) == 0)
 		{
@@ -85,10 +86,4 @@ public class BiomeGenRift extends BiomeGenBase
 		
 		return new ArrayList();
 	}
-	
-	@Override
-    public int getSkyColorByTemp(float temp)
-    {
-        return 0;
-    }
 }

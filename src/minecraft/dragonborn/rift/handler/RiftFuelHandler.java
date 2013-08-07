@@ -12,7 +12,7 @@ public class RiftFuelHandler implements IFuelHandler
 	{
 		if (fuel.itemID == Items.item_dragonscale.itemID)
 		{
-			return 12 * 20* 10; // 12 items * 20 ticks/second * 10 seconds per smelt
+			return 12 * 20 * 10; // 12 items * 20 ticks/second * 10 seconds per smelt
 		}
 		
 		return 0;

@@ -73,5 +73,14 @@ public class Blocks
 		GameRegistry.registerBlock(block_dragonscaleBlock, "dragonscaleBlock");
 		GameRegistry.registerBlock(block_riftPortal, "riftPortal");
 		
+		/** Add names */
+		LanguageRegistry.addName(block_enderDirt, "Ender Dirt");
+		LanguageRegistry.addName(block_dragonGrass, "Dragongrass");
+		LanguageRegistry.addName(block_dragonwood, "Dragonwood");
+		LanguageRegistry.addName(block_dragonleaves, "Dragonleaves");
+		LanguageRegistry.addName(block_enderFlower, "Ender Flower");
+		LanguageRegistry.addName(block_dragonscaleOre, "Dragonscale Ore");
+		LanguageRegistry.addName(block_dragonscaleBlock, "Dragonscale Block");
+		LanguageRegistry.addName(block_riftPortal, "Rift Portal");
 	}
 }

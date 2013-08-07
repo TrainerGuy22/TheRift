@@ -6,11 +6,11 @@ import net.minecraftforge.common.Configuration;
 
 public class Config
 {
-	private static Configuration	config	= null;
+	private static Configuration	config						= null;
 	
-	public static int DEFAULT_RIFT_DIMENSION_ID = 8;
+	public static int				DEFAULT_RIFT_DIMENSION_ID	= 8;
 	
-	public static int RIFT_DIMENSION_ID = DEFAULT_RIFT_DIMENSION_ID;
+	public static int				RIFT_DIMENSION_ID			= DEFAULT_RIFT_DIMENSION_ID;
 	
 	public static void loadConfig(File configFile)
 	{
@@ -19,6 +19,12 @@ public class Config
 		
 		/** Load values into fields */
 		RIFT_DIMENSION_ID = getInt("dimension", "dimensionID", DEFAULT_RIFT_DIMENSION_ID);
+	}
+	
+	public static void saveConfig()
+	{
+		if (config != null)
+			config.save();
 	}
 	
 	public static Configuration getConfig()

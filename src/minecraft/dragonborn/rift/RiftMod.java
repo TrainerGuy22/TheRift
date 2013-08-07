@@ -58,6 +58,9 @@ public class RiftMod
 		
 		/** Create recipes */
 		Recipes.initRecipes();
+		
+		/** Save configuration */
+		Config.saveConfig();
 	}
 	
 	@EventHandler
