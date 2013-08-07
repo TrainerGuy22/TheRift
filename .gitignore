@@ -25,6 +25,9 @@ LICENSE.txt
 # Non-Rift source #
 /src/minecraft/*
 !/src/minecraft/mcmod.info
+!/src/minecraft/assets/
+!/src/minecraft/assets/*
+!/src/minecraft/assets/**/*
 !/src/minecraft/dragonborn/
 !/src/minecraft/dragonborn/*
 !/src/minecraft/dragonborn/**/*
