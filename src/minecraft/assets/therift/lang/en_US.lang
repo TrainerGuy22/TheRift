@@ -1,0 +1,16 @@
+item.enderNugget.name=Ender Sliver
+item.dragonscale.name=Dragonscale
+item.dragonscaleAxe.name=Dragonscale Axe
+item.dragonscaleHoe.name=Dragonscale Hoe
+item.dragonscalePickaxe.name=Dragonscale Pickaxe
+item.dragonscaleShovel.name=Dragonscale Shovel
+item.dragonscaleSword.name=Dragonscale Sword
+item.phoenixFeather.name=Phoenix Feather
+
+tile.enderDirt.name=Ender Dirt
+tile.dragonGrass.name=Dragongrass
+tile.dragonwood.name=Dragonwood
+tile.dragonleaves.name=Dragonleaves
+tile.enderFlower.name=Ender Flower
+tile.dragonscaleOre.name=Dragonscale Ore
+tile.dragonscaleBlock.name=Dragonscale Block
