@@ -14,6 +14,9 @@ public class WorldGenDragonTree extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int x, int y, int z)
 	{
+		if (y <= 0 || !(world.getBlockId(x, y - 1, z) == Blocks.blockID_dragonGrass || world.getBlockId(x, y - 1, z) == Blocks.blockID_enderDirt))
+			return false;
+		
 		/** Constants */
 		int height = random.nextInt(2) + 3;
 		int radius = 2;
@@ -51,5 +54,4 @@ public class WorldGenDragonTree extends WorldGenerator
 		
 		return true;
 	}
-	
 }

@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import dragonborn.rift.RiftMod;
 import dragonborn.rift.config.Blocks;
+import dragonborn.rift.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -34,7 +35,7 @@ public class BlockDragonscaleBrick extends Block
 	public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
 	{
 		int topID = world.getBlockId(x, y + 1, z);
-		if (topID == Block.fire.blockID)
+		if (topID == Block.fire.blockID && world.provider.dimensionId == Config.RIFT_DIMENSION_ID)
 		{
 			tryToMakePortal(world, x, y + 1, z);
 		}

@@ -107,6 +107,11 @@ public class BlockRiftPortal extends BlockPortal
 				RiftSavedData riftData = (RiftSavedData) world.loadItemData(RiftSavedData.class, "rift");
 				if (riftData == null)
 					riftData = new RiftSavedData("rift");
+				RiftUtil.teleportPlayer(player, 0);
+				ChunkCoordinates spawn = player.worldObj.getSpawnPoint();
+				spawn.posX += 0.5;
+				spawn.posZ += 0.5;
+				player.playerNetServerHandler.setPlayerLocation(spawn.posX, player.worldObj.getTopSolidOrLiquidBlock(spawn.posX, spawn.posZ) + 1, spawn.posZ, 0.0f, 0.0f);
 				if (!riftData.hasDefeatedRift)
 				{
 					player.triggerAchievement(AchievementList.theEnd2);
@@ -115,14 +120,6 @@ public class BlockRiftPortal extends BlockPortal
 					riftData.hasDefeatedRift = true;
 					riftData.setDirty(true);
 					player.playerNetServerHandler.sendPacketToPlayer(new Packet70GameEvent(4, 0));
-				}
-				else
-				{
-					RiftUtil.teleportPlayer(player, 0);
-					ChunkCoordinates spawn = player.worldObj.getSpawnPoint();
-					spawn.posX += 0.5;
-					spawn.posZ += 0.5;
-					player.playerNetServerHandler.setPlayerLocation(spawn.posX, player.worldObj.getTopSolidOrLiquidBlock(spawn.posX, spawn.posZ) + 1, spawn.posZ, 0.0f, 0.0f);
 				}
 			}
 		}
