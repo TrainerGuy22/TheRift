@@ -8,7 +8,8 @@ public class Config
 {
 	private static Configuration	config						= null;
 	
-	public static int				DEFAULT_RIFT_DIMENSION_ID	= 8;
+	public static final int			DEFAULT_RIFT_DIMENSION_ID	= 8;
+	public static final boolean		USE_LANGUAGE_FILE			= true;
 	
 	public static int				RIFT_DIMENSION_ID			= DEFAULT_RIFT_DIMENSION_ID;
 	

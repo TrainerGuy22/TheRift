@@ -73,15 +73,18 @@ public class Items
 		GameRegistry.registerItem(item_dragonscaleSword, "dragonscaleSword");
 		GameRegistry.registerItem(item_dragonLighter, "dragonLighter");
 		
-		/** Add names */
-		LanguageRegistry.addName(item_enderNugget, "Ender Nugget");
-		LanguageRegistry.addName(item_dragonscale, "Dragonscale");
-		LanguageRegistry.addName(item_dragonscaleIngot, "Dragonscale Ingot");
-		LanguageRegistry.addName(item_dragonscaleAxe, "Dragonscale Axe");
-		LanguageRegistry.addName(item_dragonscaleHoe, "Dragonscale Hoe");
-		LanguageRegistry.addName(item_dragonscalePickaxe, "Dragonscale Pickaxe");
-		LanguageRegistry.addName(item_dragonscaleShovel, "Dragonscale Shovel");
-		LanguageRegistry.addName(item_dragonscaleSword, "Dragonscale Sword");
-		LanguageRegistry.addName(item_dragonLighter, "Dragon Lighter");
+		if (!Config.USE_LANGUAGE_FILE)
+		{
+			/** Add names */
+			LanguageRegistry.addName(item_enderNugget, "Ender Nugget");
+			LanguageRegistry.addName(item_dragonscale, "Dragonscale");
+			LanguageRegistry.addName(item_dragonscaleIngot, "Dragonscale Ingot");
+			LanguageRegistry.addName(item_dragonscaleAxe, "Dragonscale Axe");
+			LanguageRegistry.addName(item_dragonscaleHoe, "Dragonscale Hoe");
+			LanguageRegistry.addName(item_dragonscalePickaxe, "Dragonscale Pickaxe");
+			LanguageRegistry.addName(item_dragonscaleShovel, "Dragonscale Shovel");
+			LanguageRegistry.addName(item_dragonscaleSword, "Dragonscale Sword");
+			LanguageRegistry.addName(item_dragonLighter, "Dragon Lighter");
+		}
 	}
 }
