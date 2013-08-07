@@ -9,11 +9,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.packet.Packet70GameEvent;
 import net.minecraft.stats.AchievementList;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import dragonborn.rift.RiftMod;
 import dragonborn.rift.config.Blocks;
+import dragonborn.rift.data.RiftSavedData;
+import dragonborn.rift.util.RiftUtil;
 
 public class BlockRiftPortal extends BlockPortal
 {
@@ -99,10 +102,28 @@ public class BlockRiftPortal extends BlockPortal
 			if (entity instanceof EntityPlayerMP)
 			{
 				EntityPlayerMP player = (EntityPlayerMP) entity;
-				player.triggerAchievement(AchievementList.theEnd2);
-				player.worldObj.removeEntity(player);
-				player.playerConqueredTheEnd = true;
-				player.playerNetServerHandler.sendPacketToPlayer(new Packet70GameEvent(4, 0));
+				if (player.worldObj.isRemote)
+					return;
+				RiftSavedData riftData = (RiftSavedData) world.loadItemData(RiftSavedData.class, "rift");
+				if (riftData == null)
+					riftData = new RiftSavedData("rift");
+				if (!riftData.hasDefeatedRift)
+				{
+					player.triggerAchievement(AchievementList.theEnd2);
+					player.worldObj.removeEntity(player);
+					player.playerConqueredTheEnd = true;
+					riftData.hasDefeatedRift = true;
+					riftData.setDirty(true);
+					player.playerNetServerHandler.sendPacketToPlayer(new Packet70GameEvent(4, 0));
+				}
+				else
+				{
+					RiftUtil.teleportPlayer(player, 0);
+					ChunkCoordinates spawn = player.worldObj.getSpawnPoint();
+					spawn.posX += 0.5;
+					spawn.posZ += 0.5;
+					player.playerNetServerHandler.setPlayerLocation(spawn.posX, player.worldObj.getTopSolidOrLiquidBlock(spawn.posX, spawn.posZ) + 1, spawn.posZ, 0.0f, 0.0f);
+				}
 			}
 		}
 	}

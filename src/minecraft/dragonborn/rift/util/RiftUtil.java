@@ -56,8 +56,11 @@ public class RiftUtil
 		
 		MinecraftServer server = MinecraftServer.getServer();
 		WorldServer newWorld = server.worldServerForDimension(dimID);
+		if (player.dimension == 1) // they're in the end, so we de-Mojangify them first
+		{
+			WorldServer overworld = server.worldServerForDimension(dimID);
+			server.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterRift(overworld)); // WHY THE **** DO I HAVE TO DO THIS, MOJANG
+		}
 		server.getConfigurationManager().transferPlayerToDimension(player, dimID, new TeleporterRift(newWorld));
-		
-		// player.travelToDimension(dimID);
 	}
 }

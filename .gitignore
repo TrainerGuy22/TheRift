@@ -5,6 +5,7 @@
 *.jar
 *.war
 *.ear
+*.zip
 
 # MCP stuff #
 /bin/

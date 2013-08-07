@@ -28,6 +28,6 @@ public class BlockEnderFlower extends BlockFlower
 	@Override
 	protected boolean canThisPlantGrowOnThisBlockID(int blockID)
 	{
-		return blockID == Blocks.blockID_dragonTerrain;
+		return blockID == Blocks.blockID_enderDirt;
 	}
 }
